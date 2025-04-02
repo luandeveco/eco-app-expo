@@ -1,0 +1,33 @@
+{
+  "expo": {
+    "name": "eco-app",
+    "slug": "eco-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/img/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "scheme": "eco-app",
+    "splash": {
+      "image": "./src/assets/img/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/img/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.ecoconsultoria.ecoapp"
+    },
+    "web": {
+      "favicon": "./src/assets/img/favicon.png"
+    },
+    "plugins": [
+      "expo-router"
+    ]
+  }
+}
