@@ -5,7 +5,7 @@ import { Line } from '../../components/Line';
 import { Dropdown } from 'react-native-element-dropdown';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
-
+import { useRouter } from 'expo-router';
 
 const {width, height} = Dimensions.get('window');
 
@@ -21,6 +21,8 @@ interface Movement {
 };
 
 const Rota = () => {
+
+const router = useRouter()
 
 const [loading, setLoading] = useState(false);
 const [filterOpen, setFilterOpen] = useState(false);
@@ -65,7 +67,7 @@ const toggleSwitch = () => {
 
 const renderItem = ({item}:any) => {
       return(
-      <View style={styles.CardReceipt}>
+      <Pressable onPress={() => router.navigate('/novoRecibo')} style={styles.CardReceipt}>
             <View style={{flexDirection: 'row'}}>
                   <View style={{flexDirection:'row'}}>
                         <Text style={styles.TitleReceipt}>RECIBO: </Text>
@@ -93,7 +95,7 @@ const renderItem = ({item}:any) => {
                   <Text style={styles.TitleReceipt}>REFERÊNCIA: </Text>
                   <Text style={styles.ContributorData}>{item.referencia}</Text> 
             </View>
-      </View>  
+      </Pressable>  
       )
 }
 

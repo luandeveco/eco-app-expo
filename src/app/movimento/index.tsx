@@ -152,7 +152,7 @@ return (
           </View>
         </Pressable>
         <Pressable
-          //onPress={block == false ? clock : handleRelatory}
+          onPress={() => router.navigate('/relatorio')}
           style={styles.downButton}>
           <View style={styles.buttonContainer}>
             <AntDesign name="pdffile1" size={24} color={colors.light.white} />
