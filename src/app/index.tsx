@@ -43,7 +43,7 @@ export default function Login(){
         <View>
             <Pressable
               onPress={() => router.navigate('/movimento')}
-              style={styles.boxButton}
+              style={({pressed}) => [styles.boxButton, {opacity: pressed ? 0.5 : 1 }]}
               >
               <Text style={styles.textBotton}>Entrar</Text>
             </Pressable>

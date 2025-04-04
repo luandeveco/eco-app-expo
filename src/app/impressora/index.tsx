@@ -34,7 +34,7 @@ export default function Impressora() {
           {/** Cabeçalho da tela: Botão de voltar e título */}
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Pressable
-            style={styles.LineContainer}
+            style={({pressed}) => [styles.LineContainer, {opacity: pressed ? 0.5 : 1 }]}
             onPress={() => router.back()}>
             <View style={styles.button}>
             <AntDesign name="left" size={24} color={colors.light.blue} />
@@ -64,7 +64,7 @@ export default function Impressora() {
         <View style={{marginRight: '5%'}}>
           <View style={{marginVertical: '4%', alignItems: 'flex-end'}}>
             <Pressable
-              style={styles.LineContainerButton}
+              style={({pressed}) => [styles.LineContainerButton, {opacity: pressed ? 0.5 : 1 }]}
               onPress={() => setModal(true)}>
               <Text style={styles.text}>Cadastrar</Text>
             </Pressable>
@@ -74,7 +74,7 @@ export default function Impressora() {
             data={[]}
             renderItem={({item}) => (
               <Pressable
-                style={{
+                  style={({pressed})=> [{
                   backgroundColor: colors.light.white,
                   padding: '3%',
                   marginLeft: '5%',
@@ -84,7 +84,7 @@ export default function Impressora() {
                   flexDirection: 'row',
                   alignItems: 'center',
                   justifyContent: 'space-between',
-                }}
+                },{opacity: pressed ? 0.5 : 1 }]}
                 onPress={() => {
                   //setModalAction(true), setIdPrint(item.id);
                 }}>
@@ -156,7 +156,7 @@ export default function Impressora() {
                       {data.item.device_name ||
                       data.item.inner_mac_address != null ? (
                         <Pressable
-                          style={styles.Printer}
+                          style={({pressed}) => [styles.Printer, {opacity: pressed ? 0.5 : 1 }]}
                           onPress={() => {
                             Print(
                               data.item.inner_mac_address,
@@ -173,7 +173,7 @@ export default function Impressora() {
                         </Pressable>
                       ) : (
                         <Pressable
-                          style={styles.Printer}
+                          style={({pressed}) => [styles.Printer, {opacity: pressed ? 0.5 : 1 }]}
                           onPress={() => setModal(false)}>
                           <Text
                             style={{

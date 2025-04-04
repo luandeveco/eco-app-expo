@@ -110,7 +110,7 @@ return (
             filterOpen == true ? {height: height * 0.38} : {},
       ]}>
       <Pressable
-            style={styles.FilterLine}
+            style={({pressed}) => [styles.FilterLine , {opacity: pressed ? 0.5 : 1 }]}
             onPress={() =>  setFilterOpen(filterOpen == true ? false : true)}>
             <Entypo name={filterOpen ? "chevron-down" : "chevron-right"} size={24} color="black" />
             <Text style={styles.TextFilter}>{'FILTRAR'}</Text>
@@ -126,14 +126,14 @@ return (
       }}>
             <Pressable
             onPress={cleanFilter}
-            style={{
+            style={({pressed}) => [{
                   backgroundColor: colors.light.blue,
                   borderRadius: 8,
                   width: '100%',
                   height: '100%',
                   alignItems: 'center',
                   justifyContent: 'center',
-            }}>
+            },{opacity: pressed ? 0.5 : 1 }]}>
                   <View style={{flexDirection: 'row'}}>
                         <AntDesign name="closecircleo" size={20} color={colors.light.white} />
                         <Text

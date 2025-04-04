@@ -149,7 +149,7 @@ import {
           <View style={styles.ButtonDownView}>
             {checkLocation === true ? (
               <Pressable
-                style={{
+                style={({pressed}) => [{
                   backgroundColor: '#fff',
                   borderColor:'#fff',
                   marginBottom: '1%',
@@ -159,7 +159,7 @@ import {
                   borderWidth: 1,
                   padding: 10,
                   borderRadius: 5,
-                }}
+                },{opacity: pressed ? 0.5 : 1 }]}
                 disabled={
                   false
                 }
@@ -170,7 +170,7 @@ import {
               </Pressable>
             ) : (
               <Pressable
-                style={{
+                style={({pressed}) => [{
                   backgroundColor: '#fff',
                   borderColor: '#fff',
                   marginBottom: '1%',
@@ -180,7 +180,7 @@ import {
                   borderWidth: 1,
                   padding: 10,
                   borderRadius: 5,
-                }}
+                },{opacity: pressed ? 0.5 : 1 }]}
                 disabled={
                    false
                 }
@@ -290,7 +290,10 @@ import {
             {/**Informações do contribuinte*/}
             <View style={styles.receiptInformation}>
               <Text style={styles.titleText}>CONTRIBUINTE</Text>
-              <Pressable onPress={() => console.log('checkCPF')}>
+              <Pressable
+                onPress={() => console.log('checkCPF')}
+                style={({pressed}) => [{opacity: pressed ? 0.5 : 1 }]}
+                >
                 <Text style={[styles.receiptInformationData, {fontSize}]}>
                   00000-
                 </Text>
@@ -302,14 +305,14 @@ import {
                     {telefone && (
                       <>
                         <Pressable
-                          style={styles.ButtonCall}
+                          style={({pressed}) => [styles.ButtonCall, {opacity: pressed ? 0.5 : 1 }]}
                           onPress={() => callNumber(telefone)}>
                           <Text style={[styles.TextData, {fontSize}]}>
                             {formatPhoneNumber(telefone)}
                           </Text>
                         </Pressable>
                         <Pressable
-                          style={styles.ButtonCall}
+                          style={({pressed}) => [styles.ButtonCall , {opacity: pressed ? 0.5 : 1 }]}
                           onPress={() => sendAlertWhatsapp(telefone)}>
                           <FontAwesome name="whatsapp" size={24} color="green" />
                         </Pressable>
@@ -348,13 +351,13 @@ import {
                     }}
                   /> */}
                   <Pressable
-                    style={{
+                    style={({pressed}) => [{
                       backgroundColor: '#2974b4',
                       marginVertical: '2%',
                       width: '100%',
                       padding: '5%',
                       borderRadius: 8,
-                    }}
+                    },{opacity: pressed ? 0.5 : 1 }]}
                     onPress={() => savePhone()}>
                     <Text
                       style={{
@@ -471,13 +474,13 @@ import {
                 value={textTaxpayer}
               />
               <Pressable
-                style={{
+                style={({pressed}) => [{
                   backgroundColor: '#2974b4',
                   marginVertical: '2%',
                   width: '100%',
                   padding: '5%',
                   borderRadius: 8,
-                }}
+                },{opacity: pressed ? 0.5 : 1 }]}
                 onPress={() => console.log('saveText()') }>
                 <Text
                   style={{
@@ -491,7 +494,7 @@ import {
             </View>
           </View>
           <Pressable
-            style={{
+            style={({pressed}) => [{
               backgroundColor: '#fff',
               borderColor:'#fff',
               marginVertical: '3%',
@@ -501,7 +504,7 @@ import {
               borderWidth: 1,
               padding: 10,
               borderRadius: 5,
-            }}
+            },{opacity: pressed ? 0.5 : 1 }]}
             disabled={false}
             onPress={() => {
               console.log('downReturned()')
@@ -534,7 +537,7 @@ import {
             ''
           )} */}
           <Pressable
-            style={{
+            style={({pressed}) => [{
               backgroundColor: '#fff',
               borderColor: '#fff',
               marginBottom: '3%',
@@ -544,7 +547,7 @@ import {
               borderWidth: 1,
               padding: 10,
               borderRadius: 5,
-            }}
+            },{opacity: pressed ? 0.5 : 1 }]}
             onPress={() => {
               setModalVisible(true);
             }}>
@@ -596,7 +599,7 @@ import {
                           <>
                             <ScrollView showsVerticalScrollIndicator={false}>
                               <Pressable
-                                style={styles.ButtonCallModal}
+                                style={({pressed}) => [styles.ButtonCallModal, {opacity: pressed ? 0.5 : 1 }]}
                                 onPress={() => sendAlertWhatsapp(telefone)}>
                                 <Text style={{color: '#ffffff'}}>
                                   {formatPhoneNumber(telefone)}
@@ -615,7 +618,7 @@ import {
                         width: '100%',
                       }}>
                       <Pressable
-                        style={{
+                        style={({pressed}) => [{
                           backgroundColor: '#2974B4',
                           padding: 10,
                           borderRadius: 15,
@@ -624,7 +627,7 @@ import {
                           justifyContent: 'center',
                           alignItems: 'center',
                           paddingVertical: '11%',
-                        }}
+                        },{opacity: pressed ? 0.5 : 1 }]}
                         onPress={() => {
                           setModalVisible(!false);
                           //printNotice();
@@ -639,7 +642,7 @@ import {
                         </Text>
                       </Pressable>
                       <Pressable
-                        style={{
+                        style={({pressed}) => [{
                           backgroundColor: '#2974B4',
                           padding: 10,
                           borderRadius: 15,
@@ -647,7 +650,7 @@ import {
                           alignContent: 'center',
                           justifyContent: 'center',
                           alignItems: 'center',
-                        }}
+                        },{opacity: pressed ? 0.5 : 1 }]}
                         onPress={() => setShowPhones(true)}>
                         <FontAwesome name="whatsapp" size={24} color="green" />
                         <Text
@@ -692,13 +695,13 @@ import {
                 }}>
                 <Pressable
                   onPress={() => setCpfCheck(false)}
-                  style={{
+                  style={({pressed}) => [{
                     alignSelf: 'flex-end',
                     top: 8,
                     position: 'absolute',
                     marginRight: '7%',
                     marginTop: '3.5%',
-                  }}>
+                  }, {opacity: pressed ? 0.5 : 1 }]}>
                   <AntDesign name="closecircleo" size={28} color={colors.light.white} />
                 </Pressable>
                 <Text style={styles.ModalCPFTitleText}>CPF DOS DOADORES</Text>
@@ -811,7 +814,7 @@ import {
                 )}
                 <Pressable
                   //onPress={CPF}
-                  style={{
+                  style={({pressed}) => [{
                     backgroundColor: '#FFFFFF',
                     borderColor: '#FFFFFF',
                     marginBottom: '3%',
@@ -822,7 +825,7 @@ import {
                     borderRadius: 10,
                     marginVertical: '2%',
                     marginTop: '13%',
-                  }}>
+                  },{opacity: pressed ? 0.5 : 1 }]}>
                   <Text
                     style={{
                       color: '#2974b4',

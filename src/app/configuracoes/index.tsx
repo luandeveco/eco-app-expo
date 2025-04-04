@@ -26,7 +26,7 @@ export default function Configuracoes() {
         {/** Cabeçalho da tela: Botão de voltar e título */}
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Pressable
-            style={styles.LineContainer}
+            style={({pressed}) => [styles.LineContainer, {opacity: pressed ? 0.5 : 1 }]}
             onPress={() => router.back()}>
             <View style={styles.button}>
             <AntDesign name="left" size={24} color={colors.light.blue} />
@@ -55,14 +55,14 @@ export default function Configuracoes() {
         {/** Opção da impressora */}
         <View>
             <Pressable
-            style={{
+            style={({pressed}) => [{
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginTop: '8%',
                 borderBottomWidth: 1,
                 paddingVertical: '5%',
                 justifyContent: 'space-between',
-            }}
+            },{opacity: pressed ? 0.5 : 1 }]}
             onPress={() => router.navigate('/impressora')}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <AntDesign name="printer" size={24} color={colors.light.blue} />
@@ -84,14 +84,14 @@ export default function Configuracoes() {
         {/** Opção do Relatório */}
         <View>
         <Pressable
-            style={{
+            style={({pressed})=> [{
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginTop: '2%',
                 borderBottomWidth: 1,
                 paddingVertical: '5%',
                 justifyContent: 'space-between',
-            }}
+            },{opacity: pressed ? 0.5 : 1 }]}
             onPress={() => router.navigate('/relatorioConfig')}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <AntDesign name="pdffile1" size={24} color={colors.light.blue} />
@@ -113,14 +113,14 @@ export default function Configuracoes() {
         {/** Opção do Aparência */}
         <View>
             <Pressable
-            style={{
+            style={({pressed}) => [{
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginTop: '2%',
                 borderBottomWidth: 1,
                 paddingVertical: '5%',
                 justifyContent: 'space-between',
-            }}
+            },{opacity: pressed ? 0.5 : 1 }]}
             onPress={() => router.navigate('/aparencia')}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <MaterialCommunityIcons name="brush-variant" size={24} color={colors.light.blue} />
@@ -142,14 +142,14 @@ export default function Configuracoes() {
         {/** Suporte */}
         <View>
             <Pressable
-            style={{
+            style={({pressed}) => [{
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginTop: '2%',
                 borderBottomWidth: 1,
                 paddingVertical: '5%',
                 justifyContent: 'space-between',
-            }}
+            },{opacity: pressed ? 0.5 : 1 }]}
             onPress={() => setContactSupport(true) }>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <FontAwesome5 name="whatsapp" size={24} color={colors.light.blue} />
@@ -168,14 +168,14 @@ export default function Configuracoes() {
         {/** Logout */}
         <View>
             <Pressable
-            style={{
+            style={({pressed}) => [{
                 flexDirection: 'row',
                 alignItems: 'center',
                 marginTop: '2%',
                 borderBottomWidth: 1,
                 paddingVertical: '5%',
                 justifyContent: 'space-between',
-            }}
+            },{opacity: pressed ? 0.5 : 1 }]}
             onPress={() => console.log('logout')}>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <AntDesign name="logout" size={24} color={colors.light.red} />
@@ -202,12 +202,12 @@ export default function Configuracoes() {
             </Text>
             <View style={styles.buttonOptions}>
             <Pressable
-                style={styles.ButtonOptionsWhatsapp}
+                style={({pressed}) => [styles.ButtonOptionsWhatsapp, {opacity: pressed ? 0.5 : 1 }]}
                 onPress={() => console.log('whtas')}>
                 <Text style={styles.textButtonModel}>Falar com suporte</Text>
             </Pressable>
             <Pressable
-                style={styles.ButtonOptionscancel}
+                style={({pressed}) => [styles.ButtonOptionscancel,{opacity: pressed ? 0.5 : 1 }]}
                 onPress={() => setContactSupport(false)}>
                 <Text style={styles.textButtonModel}>Cancelar</Text>
             </Pressable>

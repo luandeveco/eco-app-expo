@@ -132,7 +132,7 @@ return (
   <Pressable
         //onPress={block == false ? clock : handleMovimento}
         //disabled={loading}
-        style={styles.Syncbutton}>
+        style={({pressed}) => [styles.Syncbutton,{opacity: pressed ? 0.5 : 1 }]}>
         
           <>
             <View style={styles.buttonContainer}>
@@ -153,7 +153,7 @@ return (
         </Pressable>
         <Pressable
           onPress={() => router.navigate('/relatorio')}
-          style={styles.downButton}>
+          style={({pressed}) => [styles.downButton,{opacity: pressed ? 0.5 : 1 }]}>
           <View style={styles.buttonContainer}>
             <AntDesign name="pdffile1" size={24} color={colors.light.white} />
             <Text style={styles.buttonTextDown}>Relatório</Text>

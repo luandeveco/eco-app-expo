@@ -42,7 +42,7 @@ import {
               {/** Cabeçalho da tela: Botão de voltar e título */}
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Pressable
-                  style={styles.LineContainer}
+                  style={({pressed}) => [styles.LineContainer, {opacity: pressed ? 0.5 : 1 }]}
                   onPress={() => router.back()}>
                   <View style={styles.button}>
                     <AntDesign name="left" size={24} color={colors.light.blue} />
