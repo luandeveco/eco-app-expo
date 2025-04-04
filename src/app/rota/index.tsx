@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import {Pressable, Text, View, StyleSheet, Dimensions, Switch, StatusBar, VirtualizedList} from 'react-native';
+import BackButton from '../../components/BackButton';
 import colors from '../../assets/themes/colors';
 import { Line } from '../../components/Line';
 import { Dropdown } from 'react-native-element-dropdown';
@@ -65,6 +66,10 @@ const toggleSwitch = () => {
       setIsEnabled(previousState => !previousState);
 };
 
+const handleReturn = () => {
+      router.back()
+}
+
 const renderItem = ({item}:any) => {
       return(
       <Pressable onPress={() => router.navigate('/novoRecibo')} style={styles.CardReceipt}>
@@ -103,7 +108,7 @@ const renderItem = ({item}:any) => {
 return (
 <View style={styles.view}>
       <StatusBar backgroundColor={colors.light.blue}/>
-            {/* <BackButton onPress={handleReturn} /> */}
+      <BackButton onPress={handleReturn} />
       <View
       style={[
             styles.FilterBox,

@@ -843,7 +843,7 @@ import { useNavigation } from 'expo-router';
                         onPress={() => {
                           setRelatoryState(true);
                         }}>
-                        <MaterialCommunityIcons name="clipboard-text-outline" size={24} color="black" />
+                        <MaterialCommunityIcons name="clipboard-text-outline" size={24} color={colors.light.white} />
                         <Text style={{color: colors.light.white, fontWeight: '500'}}>
                           Resumido
                         </Text>
@@ -865,7 +865,7 @@ import { useNavigation } from 'expo-router';
                           setRelatoryState(true);
                           setRelatoryStateDetail(true);
                         }}>
-                        <MaterialCommunityIcons name="note-text-outline" size={24} color="black" />
+                        <MaterialCommunityIcons name="note-text-outline" size={24} color={colors.light.white}  />
                         <Text style={{color: colors.light.white, fontWeight: '500'}}>
                           Detalhado
                         </Text>

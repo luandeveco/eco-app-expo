@@ -632,7 +632,7 @@ import {
                           setModalVisible(!false);
                           //printNotice();
                         }}>
-                        <AntDesign name="closecircleo" size={24} color="black" />
+                        <AntDesign name="closecircleo" size={24} color={colors.light.white}/>
                         <Text
                           style={{
                             color: '#FFFFFF',
@@ -652,7 +652,7 @@ import {
                           alignItems: 'center',
                         },{opacity: pressed ? 0.5 : 1 }]}
                         onPress={() => setShowPhones(true)}>
-                        <FontAwesome name="whatsapp" size={24} color="green" />
+                        <FontAwesome name="whatsapp" size={24} color={colors.light.white} />
                         <Text
                           style={{
                             color: '#FFFFFF',
