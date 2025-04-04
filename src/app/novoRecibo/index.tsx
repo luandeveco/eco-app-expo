@@ -126,7 +126,7 @@ import {
         <View
           style={{
             flex: 1,
-            backgroundColor: '#2974b4',
+            backgroundColor: colors.light.blue,
             alignItems: 'center',
             justifyContent: 'center',
           }}>
@@ -141,7 +141,7 @@ import {
         keyboardVerticalOffset={30}
         enabled>
         <StatusBar
-          backgroundColor={modalVisibleError ? 'rgba(0, 0, 0, 0.5)' : '#2974B4'}
+          backgroundColor={modalVisibleError ? colors.light.black : colors.light.blue}
           barStyle="light-content"
         />
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -164,7 +164,7 @@ import {
                   false
                 }
                 onPress={() => console.log('baixar recibo')}>
-                <Text style={{color: '#000000', fontWeight: '700'}}>
+                <Text style={{color: colors.light.black, fontWeight: '700'}}>
                   Baixar Recebido
                 </Text>
               </Pressable>
@@ -187,7 +187,7 @@ import {
                 onPress={() => {
                   console.log('downSucess()')
                 }}>
-                <Text style={{color: '#000000', fontWeight: '700'}}>
+                <Text style={{color: colors.light.black, fontWeight: '700'}}>
                   Baixar Recebido
                 </Text>
               </Pressable>
@@ -227,8 +227,8 @@ import {
                 value={0}
                 placeholder="Tipo de pagamento"
                 placeholderStyle={{
-                  color: '#000000',
-                  borderColor: '#646464',
+                  color: colors.light.black,
+                  borderColor: colors.light.gray,
                   fontFamily: 'Inter-Regular',
                   fontSize: 17,
                 }}
@@ -239,19 +239,19 @@ import {
                 style={{
                   height: 43,
                   width: '100%',
-                  borderColor: '#646464',
+                  borderColor: colors.light.gray,
                   borderRadius: 8,
                   paddingHorizontal: 8,
                   borderWidth: 1,
                   marginTop: '3%',
                 }}
                 itemTextStyle={{
-                  color: '#000000',
+                  color: colors.light.black,
                 }}
                 selectedTextStyle={{
-                  color: '#000000',
+                  color: colors.light.black,
                 }}
-                iconColor={'#000000'}
+                iconColor={colors.light.black}
                 onChange={() => console.log('dropdonw')}
               />
               {/* <TextInputMask
@@ -264,8 +264,8 @@ import {
                   marginTop: '3%',
                   marginBottom: '6%',
                   backgroundColor: 'white',
-                  borderColor: '#646464',
-                  color: '#000000',
+                  borderColor: colors.light.gray,
+                  color: colors.light.black,
                   fontFamily: 'Inter-Regular',
                   fontSize: 17,
                   borderRadius: 8,
@@ -337,8 +337,8 @@ import {
                       height: 43,
                       marginBottom: '2%',
                       backgroundColor: 'white',
-                      borderColor: '#646464',
-                      color: '#000000',
+                      borderColor: colors.light.gray,
+                      color: colors.light.black,
                       fontFamily: 'Inter-Regular',
                       fontSize: 17,
                       borderRadius: 8,
@@ -352,7 +352,7 @@ import {
                   /> */}
                   <Pressable
                     style={({pressed}) => [{
-                      backgroundColor: '#2974b4',
+                      backgroundColor: colors.light.blue,
                       marginVertical: '2%',
                       width: '100%',
                       padding: '5%',
@@ -361,7 +361,7 @@ import {
                     onPress={() => savePhone()}>
                     <Text
                       style={{
-                        color: '#FFFFFF',
+                        color: colors.light.white,
                         fontWeight: '700',
                         textAlign: 'center',
                       }}>
@@ -431,8 +431,8 @@ import {
                 value={0}
                 placeholder="TIPO DE OCORRÊNCIA"
                 placeholderStyle={{
-                  color: '#646464',
-                  borderColor: '#646464',
+                  color: colors.light.gray,
+                  borderColor: colors.light.gray,
                   fontFamily: 'Inter-Regular',
                   fontSize: 17,
                 }}
@@ -443,28 +443,28 @@ import {
                 style={{
                   height: 43,
                   width: '100%',
-                  borderColor: '#646464',
+                  borderColor: colors.light.gray,
                   borderRadius: 8,
                   paddingHorizontal: 8,
                   borderWidth: 1,
                   marginTop: '3%',
                 }}
                 selectedTextStyle={{
-                  color: '#000000',
+                  color: colors.light.black,
                 }}
                 itemTextStyle={{
-                  color: '#000000',
+                  color: colors.light.black,
                 }}
-                iconColor={'#000000'}
+                iconColor={colors.light.black}
                 onChange={() => console.log('item => setTypeOccurrenceSelected(item)')}
               />
               <TextInput
                 style={{
                   height: 40,
-                  borderColor: '#646464',
+                  borderColor: colors.light.gray,
                   borderWidth: 1,
                   borderRadius: 8,
-                  color: '#000000',
+                  color: colors.light.black,
                   marginTop: '3%',
                   width: '100%',
                   fontSize: 17,
@@ -475,7 +475,7 @@ import {
               />
               <Pressable
                 style={({pressed}) => [{
-                  backgroundColor: '#2974b4',
+                  backgroundColor: colors.light.blue,
                   marginVertical: '2%',
                   width: '100%',
                   padding: '5%',
@@ -484,7 +484,7 @@ import {
                 onPress={() => console.log('saveText()') }>
                 <Text
                   style={{
-                    color: '#FFFFFF',
+                    color: colors.light.white,
                     fontWeight: '700',
                     textAlign: 'center',
                   }}>
@@ -509,7 +509,7 @@ import {
             onPress={() => {
               console.log('downReturned()')
             }}>
-            <Text style={{color: '#000000', fontWeight: '700'}}>
+            <Text style={{color: colors.light.black, fontWeight: '700'}}>
               Baixar devolvido
             </Text>
           </Pressable>
@@ -529,7 +529,7 @@ import {
               onPress={() => {
                 printReceipt();
               }}>
-              <Text style={{color: '#000000', fontWeight: '700'}}>
+              <Text style={{color: colors.light.black, fontWeight: '700'}}>
                 Imprimir novamente
               </Text>
             </Pressable>
@@ -551,7 +551,7 @@ import {
             onPress={() => {
               setModalVisible(true);
             }}>
-            <Text style={{color: '#000000', fontWeight: '700'}}>Aviso</Text>
+            <Text style={{color: colors.light.black, fontWeight: '700'}}>Aviso</Text>
           </Pressable>
           <Modal
             animationType="fade"
@@ -571,10 +571,10 @@ import {
                   flex: 1,
                   justifyContent: 'flex-end',
                   alignItems: 'center',
-                  backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                  backgroundColor: colors.light.black,
                 }}>
                 <StatusBar
-                  backgroundColor="rgba(0, 0, 0, 0.5)"
+                  backgroundColor={colors.light.black}
                   barStyle="light-content"
                 />
                 <View
@@ -601,7 +601,7 @@ import {
                               <Pressable
                                 style={({pressed}) => [styles.ButtonCallModal, {opacity: pressed ? 0.5 : 1 }]}
                                 onPress={() => sendAlertWhatsapp(telefone)}>
-                                <Text style={{color: '#ffffff'}}>
+                                <Text style={{color: colors.light.white}}>
                                   {formatPhoneNumber(telefone)}
                                 </Text>
                               </Pressable>
@@ -619,7 +619,7 @@ import {
                       }}>
                       <Pressable
                         style={({pressed}) => [{
-                          backgroundColor: '#2974B4',
+                          backgroundColor: colors.light.blue,
                           padding: 10,
                           borderRadius: 15,
                           width: '49%',
@@ -635,7 +635,7 @@ import {
                         <AntDesign name="closecircleo" size={24} color={colors.light.white}/>
                         <Text
                           style={{
-                            color: '#FFFFFF',
+                            color: colors.light.white,
                             fontWeight: '500',
                           }}>
                           Imprimir aviso
@@ -643,7 +643,7 @@ import {
                       </Pressable>
                       <Pressable
                         style={({pressed}) => [{
-                          backgroundColor: '#2974B4',
+                          backgroundColor: colors.light.blue,
                           padding: 10,
                           borderRadius: 15,
                           width: '49%',
@@ -655,7 +655,7 @@ import {
                         <FontAwesome name="whatsapp" size={24} color={colors.light.white} />
                         <Text
                           style={{
-                            color: '#FFFFFF',
+                            color: colors.light.white,
                             fontWeight: '500',
                           }}>
                           Enviar pelo Whatsapp
@@ -678,15 +678,15 @@ import {
                 flex: 1,
                 justifyContent: 'center',
                 alignItems: 'center',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                backgroundColor: colors.light.black,
               }}>
               <StatusBar
-                backgroundColor="rgba(0, 0, 0, 0.5)"
+                backgroundColor={colors.light.black}
                 barStyle="light-content"
               />
               <View
                 style={{
-                  backgroundColor: '#2974b4',
+                  backgroundColor: colors.light.blue,
                   padding: '5%',
                   alignItems: 'flex-start',
                   width: width * 0.9,
@@ -720,18 +720,18 @@ import {
                       height: '100%',
                       borderColor: cpfTextError
                         ? CPFError
-                          ? '#FFFFFF'
+                          ? colors.light.white
                           : cpfText == ''
-                          ? '#FFFFFF'
+                          ? colors.light.white
                           : cpfTextErrorCountBoolean
                           ? cpfTextCount <= cpfTextErrorCount
-                            ? '#FFFFFF'
-                            : '#FFFFFF'
-                          : '#FFFFFF'
+                            ? colors.light.white
+                            : colors.light.white
+                          : colors.light.white
                         : CPFError
-                        ? '#FFFFFF'
-                        : '#FFFFFF',
-                      color: '#FFFFFF',
+                        ? colors.light.white
+                        : colors.light.white,
+                      color: colors.light.white,
                       borderWidth: 1,
                       borderRadius: 8,
                       fontSize: 16,
@@ -751,7 +751,7 @@ import {
                       <Text
                         style={{
                           color: 'rgba(255,255,255,0.85)',
-                          backgroundColor: '#000000',
+                          backgroundColor: colors.light.black,
                           paddingHorizontal: '2%',
                           borderRadius: 5,
                           position: 'absolute',
@@ -765,7 +765,7 @@ import {
                       <Text
                         style={{
                           color: 'rgba(255,255,255,0.85)',
-                          backgroundColor: '#000000',
+                          backgroundColor: colors.light.black,
                           paddingHorizontal: '2%',
                           borderRadius: 5,
                           position: 'absolute',
@@ -780,7 +780,7 @@ import {
                       <Text
                         style={{
                           color: 'rgba(255,255,255,0.85)',
-                          backgroundColor: '#000000',
+                          backgroundColor: colors.light.black,
                           paddingHorizontal: '2%',
                           borderRadius: 5,
                           position: 'absolute',
@@ -799,7 +799,7 @@ import {
                   <Text
                     style={{
                       color: 'rgba(255,255,255,0.85)',
-                      backgroundColor: '#000000',
+                      backgroundColor: colors.light.black,
                       paddingHorizontal: '2%',
                       borderRadius: 5,
                       position: 'absolute',
@@ -815,8 +815,8 @@ import {
                 <Pressable
                   //onPress={CPF}
                   style={({pressed}) => [{
-                    backgroundColor: '#FFFFFF',
-                    borderColor: '#FFFFFF',
+                    backgroundColor: colors.light.white,
+                    borderColor: colors.light.white,
                     marginBottom: '3%',
                     width: '50%',
                     alignSelf: 'flex-end',
@@ -828,7 +828,7 @@ import {
                   },{opacity: pressed ? 0.5 : 1 }]}>
                   <Text
                     style={{
-                      color: '#2974b4',
+                      color: colors.light.blue,
                       textAlign: 'center',
                       fontWeight: '400',
                     }}>
@@ -852,7 +852,7 @@ import {
   export const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor: '#2974B4',
+    backgroundColor: colors.light.blue,
     paddingHorizontal: '2%',
   },
   ButtonDownView: {
@@ -860,7 +860,7 @@ import {
     marginBottom:'3%'
   },
   containerReceipt: {
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.light.white,
     borderRadius: 8,
     paddingHorizontal: "2%"
   },
@@ -872,13 +872,13 @@ import {
     marginTop: '2%'
   },
   titleText: {
-    color: '#000000',
+    color: colors.light.black,
     fontFamily: 'Inter-Bold',
     fontWeight: 'bold',
     fontSize: 18
   },
   titleTextData: {
-    color: '#646464',
+    color: colors.light.gray,
     marginRight: "35%",
     marginLeft: '1%',
     fontFamily: 'Inter-Bold',
@@ -886,7 +886,7 @@ import {
     fontSize: 16
   },
   titleTextstatus: {
-    color: '#000000',
+    color: colors.light.black,
     fontFamily: 'Inter-Bold',
     fontWeight: 'bold',
     fontSize: 16
@@ -897,7 +897,7 @@ import {
     paddingHorizontal: "5%"
   },
   receiptInformationData:{
-    color: '#646464',
+    color: colors.light.gray,
     fontFamily: 'Inter-Bold',
     fontWeight: '400',
     fontSize: 16
@@ -910,22 +910,22 @@ import {
     flexDirection:'row',
     width: '100%',
     justifyContent: 'space-between',
-    backgroundColor:'#000000'
+    backgroundColor:colors.light.black
   },
   ButtonCall: {
     width: '55%',
-    color: '#000000'
+    color: colors.light.black
   },
   ButtonCallModal: {
     width: '100%',
-    backgroundColor: '#2974B4',
+    backgroundColor: colors.light.blue,
     textAlign: 'center',
     borderRadius: 12,
     padding: 20,
     marginBottom: "4%",
   },
   TextData: {
-    color: '#646464',
+    color: colors.light.gray,
     fontFamily: 'Inter-Bold',
     fontWeight: '400',
     fontSize: 16,
@@ -938,7 +938,7 @@ import {
     fontSize: 18,
   },
   ModalCPFReceiptInformationData:{
-    color: '#FFFFFF',
+    color: colors.light.white,
     fontFamily: 'Inter-Bold',
     fontWeight: '400',
     fontSize: 16,

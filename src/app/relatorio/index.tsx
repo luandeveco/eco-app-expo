@@ -20,10 +20,14 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { useNavigation } from 'expo-router';
+import BackButton from '../../components/BackButton';
+import { useNavigation, useRouter } from 'expo-router';
 
 
   export default function Relatory() {
+
+    const router = useRouter()
+
     const [loading, setLoading] = useState(false);
     const [location, setLocation] = useState<{
       latitude: number;
@@ -198,6 +202,10 @@ import { useNavigation } from 'expo-router';
     const [detailReport, setDetailReport] = useState(false);
     //const [printers, setPrinters] = useState<IBLEPrinter[]>([{} as IBLEPrinter]);
     const navigation = useNavigation();
+
+    const handleReturn = () => {
+      router.back()
+    }
   
   
     if (loading) {
@@ -228,7 +236,7 @@ import { useNavigation } from 'expo-router';
           style={{width: '100%'}}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{alignItems: 'center'}}>
-          {/* <BackButton onPress={handleReturn} /> */}
+          <BackButton onPress={handleReturn} />
           <TouchableOpacity
             style={styles.ButtonTitle}
             activeOpacity={0.75}
