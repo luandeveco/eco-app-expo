@@ -10,8 +10,9 @@ import {
 } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import colors from '../assets/themes/colors';
+import { ModalProps } from '../types/Modal';
 
-export default function ModalError({Title, Message, status, onClose} : any){
+export default function ModalError({Title, Message, status, onClose} : ModalProps){
   const [visable, setVisable] = useState(false);
   useEffect(() => {
     setVisable(status);

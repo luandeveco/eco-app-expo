@@ -12,7 +12,7 @@ import {
     Text,
     TextInput,
     ToastAndroid,
-    TouchableOpacity,
+    Pressable,
     TouchableWithoutFeedback,
     Vibration,
     View,
@@ -20,17 +20,25 @@ import {
   } from 'react-native';
   import { Line } from '../../components/Line';
   import { Dropdown } from 'react-native-element-dropdown';
+  import colors from '../../assets/themes/colors'
+  import AntDesign from '@expo/vector-icons/AntDesign';
+  import FontAwesome from '@expo/vector-icons/FontAwesome';
+  import { useRouter } from 'expo-router';
+  import BackButton from '../../components/BackButton';
+  import { formatPhoneNumber } from '../../utils/formatting/formatPhoneNumber';
+  import { formatName } from '../../utils/formatting/formatName';
+  import {Movement as MovementInterface } from '../../types/Movement';
 
-  
   const {width, height} = Dimensions.get('window');
   
   export default function NovoRecibo({}) {
+    const router = useRouter()
     const [location, setLocation] = useState<{
       latitude: number;
       longitude: number;
     } | null>(null);
     const [textTaxpayer, setTextTaxpayer] = useState('');
-    // const [receipt, setReceipt] = useState<MovementInterface>();
+    const [receipt, setReceipt] = useState<MovementInterface>();
     // const [typeSelected, setSelectedType] = useState<payment>({} as payment);
     // const [typeOccurrenceSelected, setTypeOccurrenceSelected] =
     //   useState<occourrence>({} as occourrence);
@@ -70,6 +78,49 @@ import {
     let watchId: number;
   
   
+    const handleReturn = () =>{
+      router.back()
+    }
+
+    function callNumber(telephone: string) {
+      // FAZER CHAMADA TELEFONICA
+      // return Linking.openURL(`tel://${telephone}`);
+    }
+
+    function sendAlertWhatsapp(telephone: string){
+      // ENVIAR ALERTA
+    }
+
+    async function savePhone() {
+      // SALVAR TELEPHONE
+      // if (updatePhone != ('' || null)) {
+      //   const receipRepository = await dataSource.getRepository(Movement);
+      //   const receiptNew = await receipRepository.findOne({
+      //     where: {
+      //       numero_recibo: route.params.receipt_id,
+      //     },
+      //   });
+      //   receiptNew.TelefoneObs = updatePhone;
+      //   await receipRepository.save(receiptNew);
+      //   setReceipt(receiptNew);
+      //   ToastAndroid.show('Telefone salvo com sucesso', ToastAndroid.SHORT);
+      // }
+    }
+
+    type Rec = {
+      telefone1: string;
+      telefone2: string;
+      telefone3: string;
+    };
+    
+    const TESTE_receipt: Rec[] = [
+      {
+        telefone1: '11111111',
+        telefone2: '22222222',
+        telefone3: '33333333'
+      }
+    ];
+
     if (loading) {
       return (
         <View
@@ -94,10 +145,10 @@ import {
           barStyle="light-content"
         />
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* <BackButton onPress={handleReturn} /> */}
+          <BackButton onPress={handleReturn} />
           <View style={styles.ButtonDownView}>
             {checkLocation === true ? (
-              <TouchableOpacity
+              <Pressable
                 style={{
                   backgroundColor: '#fff',
                   borderColor:'#fff',
@@ -116,9 +167,9 @@ import {
                 <Text style={{color: '#000000', fontWeight: '700'}}>
                   Baixar Recebido
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             ) : (
-              <TouchableOpacity
+              <Pressable
                 style={{
                   backgroundColor: '#fff',
                   borderColor: '#fff',
@@ -139,7 +190,7 @@ import {
                 <Text style={{color: '#000000', fontWeight: '700'}}>
                   Baixar Recebido
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             )}
           </View>
           {/*Inicio do recibo*/}
@@ -239,29 +290,29 @@ import {
             {/**Informações do contribuinte*/}
             <View style={styles.receiptInformation}>
               <Text style={styles.titleText}>CONTRIBUINTE</Text>
-              <TouchableOpacity onPress={() => console.log('checkCPF')}>
+              <Pressable onPress={() => console.log('checkCPF')}>
                 <Text style={[styles.receiptInformationData, {fontSize}]}>
                   00000-
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
               <Text style={styles.titleText}>CONTATO</Text>
-              {/* {[receipt?.telefone1, receipt?.telefone2, receipt?.telefone3].map(
+              {[TESTE_receipt[0]?.telefone1, TESTE_receipt[0]?.telefone2, TESTE_receipt[0]?.telefone3].map(
                 (telefone, index) => (
                   <View key={index} style={styles.Cell}>
                     {telefone && (
                       <>
-                        <TouchableOpacity
+                        <Pressable
                           style={styles.ButtonCall}
                           onPress={() => callNumber(telefone)}>
                           <Text style={[styles.TextData, {fontSize}]}>
                             {formatPhoneNumber(telefone)}
                           </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
+                        </Pressable>
+                        <Pressable
                           style={styles.ButtonCall}
                           onPress={() => sendAlertWhatsapp(telefone)}>
-                          <Icon name="whatsapp" size={25} color="#000000" />
-                        </TouchableOpacity>
+                          <FontAwesome name="whatsapp" size={24} color="green" />
+                        </Pressable>
                       </>
                     )}
                   </View>
@@ -270,7 +321,7 @@ import {
               {Number(Inform.ChangePhone) === 1 ? (
                 <>
                   <Text style={styles.titleText}>Novo Contato</Text>
-                  <TextInputMask
+                  {/* <TextInputMask
                     type={'cel-phone'}
                     options={{
                       maskType: 'BRL',
@@ -295,8 +346,8 @@ import {
                     onChangeText={text => {
                       setUpdatePhone(text);
                     }}
-                  />
-                  <TouchableOpacity
+                  /> */}
+                  <Pressable
                     style={{
                       backgroundColor: '#2974b4',
                       marginVertical: '2%',
@@ -313,11 +364,11 @@ import {
                       }}>
                       Salvar Número
                     </Text>
-                  </TouchableOpacity>
+                  </Pressable>
                 </>
               ) : (
                 ''
-              )} */}
+              )}
             </View>
             <View style={{alignItems: 'center'}}>
               <Line />
@@ -359,11 +410,15 @@ import {
                 }}>
                 <Text style={styles.titleText}>OBSERVAÇÃO DO RECIBO</Text>
                 <Text style={[styles.receiptInformationData, {fontSize}]}>
-                    Sem observação
+                  {receipt?.memo_obs_mensageiro
+                    ? formatName(receipt?.memo_obs_mensageiro)
+                    : 'Sem observação'}
                 </Text>
                 <Text style={styles.titleText}>OBSERVAÇÃO DO CONTRIBUINTE</Text>
                 <Text style={[styles.receiptInformationData, {fontSize}]}>
-                    Sem observação
+                  {receipt?.obs_contribuinte
+                    ? formatName(receipt?.obs_contribuinte)
+                    : 'Sem observação'}
                 </Text>
               </View>
               <Dropdown
@@ -415,7 +470,7 @@ import {
                 onChangeText={text => setTextTaxpayer(text)}
                 value={textTaxpayer}
               />
-              <TouchableOpacity
+              <Pressable
                 style={{
                   backgroundColor: '#2974b4',
                   marginVertical: '2%',
@@ -432,10 +487,10 @@ import {
                   }}>
                   ENVIAR OBSERVAÇÃO
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </View>
-          <TouchableOpacity
+          <Pressable
             style={{
               backgroundColor: '#fff',
               borderColor:'#fff',
@@ -454,9 +509,9 @@ import {
             <Text style={{color: '#000000', fontWeight: '700'}}>
               Baixar devolvido
             </Text>
-          </TouchableOpacity>
+          </Pressable>
           {/* {receipt.status === 1 ? (
-            <TouchableOpacity
+            <Pressable
               style={{
                 backgroundColor: '#fff',
                 borderColor: '#fff',
@@ -474,11 +529,11 @@ import {
               <Text style={{color: '#000000', fontWeight: '700'}}>
                 Imprimir novamente
               </Text>
-            </TouchableOpacity>
+            </Pressable>
           ) : (
             ''
           )} */}
-          <TouchableOpacity
+          <Pressable
             style={{
               backgroundColor: '#fff',
               borderColor: '#fff',
@@ -494,7 +549,7 @@ import {
               setModalVisible(true);
             }}>
             <Text style={{color: '#000000', fontWeight: '700'}}>Aviso</Text>
-          </TouchableOpacity>
+          </Pressable>
           <Modal
             animationType="fade"
             transparent={true}
@@ -540,13 +595,13 @@ import {
                         {telefone && (
                           <>
                             <ScrollView showsVerticalScrollIndicator={false}>
-                              {/* <TouchableOpacity
+                              <Pressable
                                 style={styles.ButtonCallModal}
                                 onPress={() => sendAlertWhatsapp(telefone)}>
                                 <Text style={{color: '#ffffff'}}>
                                   {formatPhoneNumber(telefone)}
                                 </Text>
-                              </TouchableOpacity> */}
+                              </Pressable>
                             </ScrollView>
                           </>
                         )}
@@ -559,7 +614,7 @@ import {
                         justifyContent: 'space-between',
                         width: '100%',
                       }}>
-                      <TouchableOpacity
+                      <Pressable
                         style={{
                           backgroundColor: '#2974B4',
                           padding: 10,
@@ -574,10 +629,7 @@ import {
                           setModalVisible(!false);
                           //printNotice();
                         }}>
-                        {/* <Image
-                          source={require('../../assets/icons/atencao.png')}
-                          style={{width: 62, height: 62, marginBottom: '2%'}}
-                        /> */}
+                        <AntDesign name="closecircleo" size={24} color="black" />
                         <Text
                           style={{
                             color: '#FFFFFF',
@@ -585,8 +637,8 @@ import {
                           }}>
                           Imprimir aviso
                         </Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity
+                      </Pressable>
+                      <Pressable
                         style={{
                           backgroundColor: '#2974B4',
                           padding: 10,
@@ -597,14 +649,7 @@ import {
                           alignItems: 'center',
                         }}
                         onPress={() => setShowPhones(true)}>
-                        {/* <Image
-                          source={require('../../assets/icons/whatsapp.png')}
-                          style={{
-                            width: 62,
-                            height: 62,
-                            marginBottom: '2%',
-                          }}
-                        /> */}
+                        <FontAwesome name="whatsapp" size={24} color="green" />
                         <Text
                           style={{
                             color: '#FFFFFF',
@@ -612,7 +657,7 @@ import {
                           }}>
                           Enviar pelo Whatsapp
                         </Text>
-                      </TouchableOpacity>
+                      </Pressable>
                     </View>
                   )}
                 </View>
@@ -645,7 +690,7 @@ import {
                   justifyContent: 'center',
                   borderRadius: 16,
                 }}>
-                <TouchableOpacity
+                <Pressable
                   onPress={() => setCpfCheck(false)}
                   style={{
                     alignSelf: 'flex-end',
@@ -654,8 +699,8 @@ import {
                     marginRight: '7%',
                     marginTop: '3.5%',
                   }}>
-                  {/* <IconAntDesign name="closecircleo" color="#FFFFFF" size={28} /> */}
-                </TouchableOpacity>
+                  <AntDesign name="closecircleo" size={28} color={colors.light.white} />
+                </Pressable>
                 <Text style={styles.ModalCPFTitleText}>CPF DOS DOADORES</Text>
                 <Text style={styles.ModalCPFReceiptInformationData}>
                   Solicite ao doador o CPF
@@ -764,7 +809,7 @@ import {
                 ) : (
                   ''
                 )}
-                <TouchableOpacity
+                <Pressable
                   //onPress={CPF}
                   style={{
                     backgroundColor: '#FFFFFF',
@@ -786,7 +831,7 @@ import {
                     }}>
                     Salvar
                   </Text>
-                </TouchableOpacity>
+                </Pressable>
               </View>
             </View>
           </Modal>

@@ -16,6 +16,17 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 
 export default function Impressora() {
   const router = useRouter()
+  const [modal, setModal] = useState(false)
+  const [printers, setPrinters] = useState([
+    {
+      inner_mac_address : '10920',
+      device_name: 'EXBOM - Printer'
+    }
+  ])
+
+  async function Print(mac_address: string, device_name: string){
+    console.log(mac_address, device_name)
+  }
 
   return (
        <View style={{flex: 1,justifyContent: 'center', marginHorizontal:'5%'}}>
@@ -54,7 +65,7 @@ export default function Impressora() {
           <View style={{marginVertical: '4%', alignItems: 'flex-end'}}>
             <Pressable
               style={styles.LineContainerButton}
-              onPress={() => console.log('aa')}>
+              onPress={() => setModal(true)}>
               <Text style={styles.text}>Cadastrar</Text>
             </Pressable>
           </View>
@@ -109,7 +120,7 @@ export default function Impressora() {
           />
         </View>
         {/** Modal de cadastro de impressora */}
-        {/* <Modal
+        <Modal
           transparent={true}
           animationType="fade"
           onRequestClose={() => setModal(false)}
@@ -146,7 +157,6 @@ export default function Impressora() {
                       data.item.inner_mac_address != null ? (
                         <Pressable
                           style={styles.Printer}
-                          activeOpacity={0.9}
                           onPress={() => {
                             Print(
                               data.item.inner_mac_address,
@@ -164,7 +174,6 @@ export default function Impressora() {
                       ) : (
                         <Pressable
                           style={styles.Printer}
-                          activeOpacity={0.9}
                           onPress={() => setModal(false)}>
                           <Text
                             style={{
@@ -190,7 +199,7 @@ export default function Impressora() {
               </View>
             </View>
           </TouchableWithoutFeedback>
-        </Modal> */}
+        </Modal>
         {/** Modal de ações da impressora */}
         {/* <Modal
           transparent={true}
